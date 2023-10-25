@@ -293,7 +293,11 @@ Change directories to wherever you created/copied the script and text file. I ha
 <br />
 <br />
 Once you are prepared to run the script, begin the process and it should look something like this:  <br/>
-<img src="https://github.com/jslee9683/ActiveDirectoryHomeLab/assets/139186768/1fc0298d-a7ae-461f-8292-bc0350b19f3e" height="80%" width="80%" alt="Active Directory Home Lab"/>
+https://github.com/jslee9683/ActiveDirectoryHomeLab/assets/139186768/a47f600c-a210-4742-8a05-77f5f62a0c88
+
+
+
+
 
 
 
