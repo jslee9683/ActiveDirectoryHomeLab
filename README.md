@@ -293,123 +293,100 @@ Change directories to wherever you created/copied the script and text file. I ha
 <br />
 <br />
 Once you are prepared to run the script, begin the process and it should look something like this:  <br/>
-https://github.com/jslee9683/ActiveDirectoryHomeLab/assets/139186768/a47f600c-a210-4742-8a05-77f5f62a0c88
-
-
-
-
-
-
-
-
-
-
+https://github.com/jslee9683/ActiveDirectoryHomeLab/assets/139186768/a47f600c-a210-4742-8a05-77f5f62a0c88 
+<br />
+<br />
+Once your script has been completed, you can check the "Users and Computers" tool and see that the accounts have been populated:  <br/>
+<img src="https://i.imgur.com/BiQzEPQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Final section of the project is to create a client device:  <br/>
+<img src="https://i.imgur.com/tPFkdFh.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Set up the VM to install Windows 10:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+I recommend using the same settings for bidirectional:  <br/>
+<img src="https://i.imgur.com/QKSCTLf.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Adjust the Network setting to make sure the NIC (or Network Adaptor) is for Internal Network:  <br/>
+<img src="https://i.imgur.com/unPXQeg.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Run the machine and go through Windows 10 installation. Use all default settings and skip all unnecessary features. When asked for a product key, you can select "I don't have a product key". For Internet, you can choose "I don't have Internet":  <br/>
+<img src="https://i.imgur.com/1rc0O6U.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Choose Windows 10 Pro because the Home version does not support Active Directory:  <br/>
+<img src="https://i.imgur.com/c6IJsAV.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Name the user:  <br/>
+<img src="https://i.imgur.com/GKo0pe2.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Once the machine is up and running, it should automatically be connected to the Internet, using the DHCP server of the Domain Controller. However, in my case, the client is not connected. Let's troubleshoot!:  <br/>
+<img src="https://i.imgur.com/zmTqZD3.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Go back to the Domain Controller machine and open up the DHCP tool, right-click "Server Options" under IPv4, and select "Configure Options...":  <br/>
+<img src="https://i.imgur.com/dK28fe4.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+In my case, the router had not been added, for some reason (I did add the router initially):  <br/>
+<img src="https://i.imgur.com/6LIwM41.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Restart the domain:  <br/>
+<img src="https://i.imgur.com/ROiLWiu.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Now, check back at the client PC, as this should have resolved the issue. In my case, I was able to get Client1 to receive an IP address of 172.16.0.1, which is the first available address from the DHCP scope:  <br/>
+<img src="https://i.imgur.com/tF1Wnt5.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Once the Internet issue is resolved, you'll rename the PC AND add this PC to the domain. To do so, select "Rename this PC (advanced) in system settings:  <br/>
+<img src="https://i.imgur.com/L97kssp.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Instead of typing in the new name into the "Computer Description" field, click "Change...":  <br/>
+<img src="https://i.imgur.com/QUH3Cxc.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Enter in the name you want and enter in the domain name in the "Domain" field:  <br/>
+<img src="https://i.imgur.com/1YNICYZ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Once prompted, enter in the account credentials of an account from the domain:  <br/>
+<img src="https://i.imgur.com/YisWmxs.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+As long as you didn't mess up the password, this should get the client PC connected to the Domain:  <br/>
+<img src="https://i.imgur.com/Im3fA4P.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Check back on the Domain Controller's DHCP tool. Under "Address Leases", you should be able to view the client PC listed:  <br/>
+<img src="https://i.imgur.com/9inR7DY.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Additionally, the device should also appear under "Computers" in the "Users and Computers" tool:  <br/>
+<img src="https://i.imgur.com/bmFrA1n.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+View detailed properties of the newly added client PC:  <br/>
+<img src="https://i.imgur.com/PBReWu0.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+<br />
+<br />
+<h2>Conclusion</h2>
+Now that you have successfully set up your new Active Directory Home Lab, you are able to add more clients, adjust network settings, mess with password policies, test out privilege escalations, and perform a variety of features using or related to Active Directory!
+Thanks for going through this lengthy project with me. If you have any questions, please let me know!
 
  
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-Reboot the machine:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-<br />
-<br />
-
 <!--
  ```diff
 - text in red
