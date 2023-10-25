@@ -144,37 +144,267 @@ This OU will be used for administrator accounts:  <br/>
 <img src="https://i.imgur.com/nDFepSm.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Create a new User:  <br/>
+<img src="https://i.imgur.com/rgQBsQc.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Add in the name and create a user logon name. To differentiate, I used the "a-" suffix to indicate that his user will be an admin:  <br/>
+<img src="https://i.imgur.com/mR6DlXu.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Create a password. For the ease of the project, I removed the additional password options and configured the password not to expire:  <br/>
+<img src="https://i.imgur.com/CXzN4wm.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Once the user is created, you must add the admin status of the account by adding member feature:  <br/>
+<img src="https://i.imgur.com/OxbtaU5.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Enter in the object name "domain admin" and select "Check Names". This should give you the option of adding the "Domain Admins" group:  <br/>
+<img src="https://i.imgur.com/cU44tSu.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Once adding the group, apply the changes and now, your new user should have admin privileges:  <br/>
+<img src="https://i.imgur.com/CzEePhz.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+Sign out of the default admin account you were working on and try signing in, using the new admin account credentials:  <br/>
+<img src="https://i.imgur.com/GSrcBlU.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
-</p>
+After confirming the admin account, now it's time to set up the RAS (Remote Access Services) on Active Directory and the NAT (Network Address Translation):  <br/>
+<img src="https://i.imgur.com/fJNgkuq.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+To install RAS in Active Directory, launch the Server Manager and select "Add roles and features":  <br/>
+<img src="https://i.imgur.com/gwzgU6B.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Keeping all default settings, select Remote Access:  <br/>
+<img src="https://i.imgur.com/BoyvfMJ.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+For Role Services, select "Routing" and it should automatically include "DirectAccess and VPN (RAS):  <br/>
+<img src="https://i.imgur.com/DHkNul9.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Finish the installation:  <br/>
+<img src="https://i.imgur.com/w0bAKHL.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Now, to configure NAT, select "Routing and Remote Access" under "Tools":  <br/>
+<img src="https://i.imgur.com/VTnYEHs.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Right-click the machine (DOMCON) and select "Configure and Enable Routing and Remote Access":  <br/>
+<img src="https://i.imgur.com/PbZmNme.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Select NAT:  <br/>
+<img src="https://i.imgur.com/hAhrJid.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+You should see your two Internet options available for the NAT Internet Connection. If the first option is blocked out and you are unable to use it, exit the Setup Wizard and open up "Routing and Remote Access" under "Tools" again. Sometimes, the Server Manager may not recognize settings immediately:  <br/>
+<img src="https://i.imgur.com/1uwDhts.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Go through the default settings and once the Setup Wizard is completed, NAT should be set up and ready:  <br/>
+<img src="https://i.imgur.com/Bj0MenS.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Next up is to set up the DHCP server, using the scope details from the network diagram:  <br/>
+<img src="https://i.imgur.com/sEvW0f5.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Launch the Server Manager and select "Add roles and features":  <br/>
+<img src="https://i.imgur.com/jZM86ri.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Select "DHCP Server" and go through the default settings:  <br/>
+<img src="https://i.imgur.com/r0AVYFV.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Complete the installation:  <br/>
+<img src="https://i.imgur.com/DnfMUie.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Select "DHCP" under "Tools":  <br/>
+<img src="https://i.imgur.com/uy3IVHu.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Add a new scope to the DHCP IPv4 by launching the "New Scope Wizard":  <br/>
+<img src="https://i.imgur.com/MIkTiGe.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Add a name of the scope. I used the scope range as the name:  <br/>
+<img src="https://i.imgur.com/RzUsuQD.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Enter in the IP Address Range, based on the target network diagram:  <br/>
+<img src="https://i.imgur.com/qYWjQtq.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Add the router IP address, which will serve as the default gateway:  <br/>
+<img src="https://i.imgur.com/KFHly4Y.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Make sure to add the domain controller's IP address for Domain Name and DNS Servers, if not already added:  <br/>
+<img src="https://i.imgur.com/JVydfg2.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Once the Setup Wizard is completed, "Authorize" the domain:  <br/>
+<img src="https://i.imgur.com/qfc05uf.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+and refresh:  <br/>
+<img src="https://i.imgur.com/aiRJlsw.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Now, both IPv4 and IPv6 should be marked green, indicating that the DHCP server is up and running:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Now, you will populate users using a PowerShell Script and a text file containing the list of names you would like to use. I premade the script on my main machine and copied it onto DomCon:  <br/>
+<img src="https://i.imgur.com/LEoDeSi.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+I used a random name generating website to generate 1000 names and copied them onto a text file:  <br/>
+<img src="https://i.imgur.com/3Xs4D7V.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Here is the PowerShell script I will be using. I have a separate project repository to detail how the script works for Active Directory, here:  <br/>
+<img src="https://i.imgur.com/iYSKSaS.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Launch Windows PowerShell ISE as admin:  <br/>
+<img src="https://i.imgur.com/33ImKDk.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Open the PowerShell script. If you try to run it immediately, you may run into this error message:  <br/>
+<img src="https://i.imgur.com/wEFRYUX.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+To avoid this error, type in "Set-Execution Policy unrestricted" and select "Yes to All". In a normal environment, this shouild not be configured for safe handling of the environment, but for the purpose of this lab, go for it!:  <br/>
+<img src="https://i.imgur.com/TfuMZSD.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Change directories to wherever you created/copied the script and text file. I had my files on my desktop so I cd'd to the Desktop. This is so that the script can properly locate the files:  <br/>
+<img src="https://i.imgur.com/ubPG6WW.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Once you are prepared to run the script, begin the process and it should look something like this:  <br/>
+<img src="https://github.com/jslee9683/ActiveDirectoryHomeLab/assets/139186768/1fc0298d-a7ae-461f-8292-bc0350b19f3e" height="80%" width="80%" alt="Active Directory Home Lab"/>
+
+
+
+
+
+
+
+ 
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
+Reboot the machine:  <br/>
+<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<br />
+<br />
 
 <!--
  ```diff
