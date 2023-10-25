@@ -261,7 +261,7 @@ and refresh:  <br/>
 <br />
 <br />
 Now, both IPv4 and IPv6 should be marked green, indicating that the DHCP server is up and running:  <br/>
-<img src="https://i.imgur.com/1uFrZ4X.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
+<img src="https://i.imgur.com/BVvYEKB.png" height="80%" width="80%" alt="Active Directory Home Lab"/>
 <br />
 <br />
 Now, you will populate users using a PowerShell Script and a text file containing the list of names you would like to use. I premade the script on my main machine and copied it onto DomCon:  <br/>
